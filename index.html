@@ -12,5 +12,54 @@
     <link rel="stylesheet" href="./style.css" />
     <script src="./script.js"></script>
   </head>
-  <body> </body>
+  <body>
+    <main>
+      <div class="logo">
+        <img src="./images/logo.png" alt="" class="logo-img" />
+      </div>
+      <div class="content intro">
+        <p class="heading">4 Pics 1 Word</p>
+        <p class="text">Press Any Key</p>
+      </div>
+      <div class="content game hide">
+        <div class="puzzle">
+          <img src="./images/game1.png" alt="" />
+          <img src="./images/game2.png" alt="" />
+          <img src="./images/game3.png" alt="" />
+          <img src="./images/game4.png" alt="" />
+        </div>
+        <form class="answer">
+          <div class="input-container">
+            <label for="userGuess" class="sr-only">Your Guess:</label>
+            <input
+              type="text"
+              id="userGuess"
+              class="input"
+              placeholder="Type your guess..." />
+            <p class="error-text hide">Sorry, that's not correct. Try again!</p>
+          </div>
+          <button type="submit" class="btn form__btn">Check Guess</button>
+        </form>
+      </div>
+      <div class="content win hide">
+        <p class="heading">You Win</p>
+      </div>
+      <div class="content lose hide">
+        <p class="heading">Game Over</p>
+        <p class="text">Trying Again?</p>
+        <div class="lose__btns">
+          <button class="btn lose__btn">Yes</button>
+          <button class="btn lose__btn">No</button>
+        </div>
+      </div>
+      <div class="content announcement hide">
+        <p class="heading">Gamers' Day</p>
+        <address>
+          <p class="text">Date: 25th December, 2023</p>
+          <p class="text">Location: Student Hall</p>
+        </address>
+        <p class="text">Be There!!!</p>
+      </div>
+    </main>
+  </body>
 </html>

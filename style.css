@@ -1,0 +1,329 @@
+/*
+  CSS Reset from
+  Josh: https://www.joshwcomeau.com/css/custom-css-reset/
+  Andy-bell: https://andy-bell.co.uk/a-more-modern-css-reset/
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  scroll-behavior: smooth;
+}
+
+body {
+  line-height: 1.5;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+address {
+  font-style: normal;
+}
+/* Reset Ends */
+
+/* Hides screen-reader contents */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Custom properties */
+:root {
+  /* primary colors */
+  --green: hsl(149, 100%, 34%);
+
+  /* neutral colors */
+  --white: hsl(0, 0%, 100%);
+}
+
+.heading {
+  text-align: center;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}
+
+.text {
+  text-align: center;
+  font-family: 'VT323', cursive;
+  font-size: 1.8rem;
+  color: var(--green);
+}
+
+.btn {
+  font-family: 'VT323', cursive;
+  font-size: 2rem;
+  border: none;
+  background: none;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--white);
+  height: 100%;
+  background-image: url(./images/black-bg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+/* Logo Style*/
+.logo {
+  position: relative;
+  width: 180px;
+  min-height: 30vh;
+  margin-bottom: 0.65rem;
+}
+
+.logo-img {
+  position: absolute;
+  bottom: 0;
+  max-width: 180px;
+}
+
+main:has(.game:not(.hide)) .logo-img {
+  bottom: 50%;
+}
+/* Logo Style*/
+
+/* General Style*/
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 70vh;
+}
+/* General Style*/
+
+/* Intro Style */
+.intro {
+  padding-top: 4rem;
+}
+
+.intro .heading {
+  width: 6ch;
+  margin-bottom: 2rem;
+}
+
+.intro .text {
+  text-transform: uppercase;
+}
+/* Intro Style */
+
+/* Game Style */
+.game {
+  max-width: 375px;
+}
+
+.puzzle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 2rem;
+  margin-top: -4rem;
+}
+
+.puzzle > img {
+  max-width: 150px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.input-container {
+  position: relative;
+}
+
+.input {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.8rem;
+  padding: 0.5rem 1rem;
+}
+
+.error-text {
+  position: absolute;
+  left: 0;
+  top: calc(100% - 0.3rem);
+  font-family: 'VT323', cursive;
+  font-size: 1rem;
+  color: hsl(0, 93%, 47%);
+}
+
+.form__btn {
+  font-size: 1.5rem;
+  color: var(--white);
+  padding: 0.5rem 1rem;
+  background-image: url(./images/btn.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+/* Game Style */
+
+/* Win Style */
+.win {
+  padding-top: 4rem;
+}
+
+.win .heading {
+  width: 5ch;
+}
+/* Win Style */
+
+/* Lose Style */
+.lose {
+  padding-top: 4rem;
+}
+
+.lose .text {
+  color: var(--white);
+  font-size: 1.5rem;
+}
+
+.lose__btns {
+  display: flex;
+  flex-direction: row;
+  gap: 5rem;
+  padding-top: 1rem;
+}
+
+.lose__btn {
+  color: var(--green);
+}
+/* Lose Style */
+
+/* announcement Style */
+.announcement {
+  gap: 1rem;
+  padding-top: 4rem;
+}
+
+address .text {
+  font-size: 1.5rem;
+  color: var(--white);
+}
+/* announcement Style */
+
+@media screen and (min-width: 765px) {
+  main {
+    padding: 0;
+  }
+
+  /* Game Style */
+  .game {
+    max-width: 500px;
+  }
+
+  .puzzle > img {
+    max-width: 160px;
+  }
+  /* Game Style */
+}
+
+@media screen and (min-width: 1440px) {
+  body {
+    height: 100vh;
+    overflow: hidden;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+/* Animations Style*/
+.intro .text {
+  transition: all 0.5s ease-in-out;
+  animation: start-text 1s linear infinite;
+}
+
+@keyframes start-text {
+  from {
+    opacity: 0;
+  }
+}
+
+.logo-img {
+  transition: all 0.5s ease-in-out;
+}
+/* Animations Style*/
