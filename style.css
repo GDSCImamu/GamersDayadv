@@ -91,6 +91,7 @@ address {
 :root {
   /* primary colors */
   --green: hsl(149, 100%, 34%);
+  --red: hsl(0, 93%, 47%);
 
   /* neutral colors */
   --white: hsl(0, 0%, 100%);
@@ -158,7 +159,7 @@ main:has(.game:not(.hide)) .logo-img {
 /* Logo Style*/
 
 /* General Style*/
-.content {
+.section {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -221,12 +222,17 @@ form {
 }
 
 .error-text {
+  display: none;
   position: absolute;
   left: 0;
   top: calc(100% - 0.3rem);
   font-family: 'VT323', cursive;
   font-size: 1rem;
-  color: hsl(0, 93%, 47%);
+  color: var(--red);
+}
+
+.input[aria-invalid='true'] + .error-text {
+  display: block;
 }
 
 .form__btn {
@@ -311,7 +317,27 @@ address .text {
   display: none;
 }
 
+.contain {
+  overflow: hidden;
+}
+
 /* Animations Style*/
+.section {
+  transition: all 0.5s ease-in-out;
+  animation: section-entrance 0.5s linear;
+}
+
+@keyframes section-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+.section.intro {
+  animation: none;
+}
+
 .intro .text {
   transition: all 0.5s ease-in-out;
   animation: start-text 1s linear infinite;
@@ -325,5 +351,16 @@ address .text {
 
 .logo-img {
   transition: all 0.5s ease-in-out;
+}
+
+.win,
+.announcement {
+  animation: win-entrance 0.8s linear;
+}
+
+@keyframes win-entrance {
+  from {
+    opacity: 0;
+  }
 }
 /* Animations Style*/
