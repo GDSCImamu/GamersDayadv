@@ -13,6 +13,30 @@ const announcement = document.querySelector('.announcement');
 
 // Variables
 const GUESS_WORD = 'game';
+const failSound = new Audio('./sounds/fail.mp3');
+const winSound = new Audio('./sounds/victory.mp3');
+
+// Helpers
+const playSound = (sound) => {
+  sound.play();
+};
+
+const showSection = (section) => {
+  sections.forEach((sec) => sec.classList.add('hide'));
+  document.querySelector('body').classList.add('contain');
+  section.classList.remove('hide');
+  section.addEventListener('animationend', () => {
+    document.querySelector('body').classList.remove('contain');
+  });
+};
+
+const setInputInvalid = (invalid = false) => {
+  userGuess.setAttribute('aria-invalid', invalid);
+};
+
+const clearError = () => {
+  userGuess.addEventListener('input', () => setInputInvalid());
+};
 
 class app {
   trialCount = 0;
@@ -22,34 +46,23 @@ class app {
     this.init();
   }
 
-  showSection = (section) => {
-    sections.forEach((sec) => sec.classList.add('hide'));
-    document.querySelector('body').classList.add('contain');
-    section.classList.remove('hide');
-    section.addEventListener('animationend', () => {
-      document.querySelector('body').classList.remove('contain');
-    });
-  };
-
-  setInputInvalid = (invalid = false) => {
-    userGuess.setAttribute('aria-invalid', invalid);
-  };
-
   init = () => {
     this.trialCount = 0;
-    this.showSection(intro);
+    showSection(intro);
     this.monitorIntro();
+    this.startGame();
+    clearError();
   };
 
   startGame = () => {
     this.trialCount = 0;
-    this.showSection(game);
+    if (!this.newUser) showSection(game);
     if (this.newUser) this.monitorForm();
   };
 
   monitorIntro = () => {
     ['click', 'keydown'].forEach((event) =>
-      document.addEventListener(event, () => this.startGame(), { once: true })
+      document.addEventListener(event, () => showSection(game), { once: true })
     );
   };
 
@@ -70,21 +83,27 @@ class app {
   };
 
   manageWin = () => {
-    this.showSection(win);
+    playSound(winSound);
+
+    showSection(win);
+
     setTimeout(() => {
-      this.showSection(announcement);
+      showSection(announcement);
     }, 2500);
     userGuess.value = '';
   };
 
   manageLose = () => {
     this.trialCount++;
-    this.setInputInvalid(true);
+
+    setInputInvalid(true);
+
     if (this.trialCount >= 3) {
-      this.showSection(lose);
+      playSound(failSound);
+      showSection(lose);
       this.monitorRetry();
       userGuess.value = '';
-      this.setInputInvalid();
+      setInputInvalid();
     }
   };
 
