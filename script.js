@@ -10,9 +10,32 @@ const loseBtns = document.querySelector('.lose__btns');
 const loseBtnYes = document.querySelector('.lose__btn--yes');
 const loseBtnNo = document.querySelector('.lose__btn--no');
 const announcement = document.querySelector('.announcement');
+const words = ["Gamer day"]; 
+const currentWordIndex = 0; // Index of the current word
+let revealedLetters = 0;
+
+
+
+
+//to reveal letter using hint button
+function revealLetter() {
+  const input = document.getElementById('userGuess');
+  
+  const currentWord = words[currentWordIndex];
+
+  // reveal letter
+  for (let i = revealedLetters; i < currentWord.length; i++) {
+    if (currentWord[i] !== ' ' && input.value[i] !== currentWord[i]) {
+      input.value = input.value.substr(0, i) + currentWord[i] + input.value.substr(i + 1);
+      revealedLetters = i + 1;
+      break;
+    }
+  }
+}
+
 
 // Variables
-const GUESS_WORD = 'game';
+const GUESS_WORD = 'gamer day';
 const failSound = new Audio('./sounds/fail.mp3');
 const winSound = new Audio('./sounds/victory.mp3');
 
@@ -114,7 +137,8 @@ class app {
       if (!btn) return;
 
       this.newUser = false;
-
+      
+     
       btn === loseBtnYes ? this.startGame() : document.location.reload();
     });
   };
