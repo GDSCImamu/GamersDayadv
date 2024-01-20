@@ -10,7 +10,7 @@ const loseBtns = document.querySelector('.lose__btns');
 const loseBtnYes = document.querySelector('.lose__btn--yes');
 const loseBtnNo = document.querySelector('.lose__btn--no');
 const announcement = document.querySelector('.announcement');
-const words = ["Gamer day"]; 
+const words = ["Ga"]; 
 const currentWordIndex = 0; // Index of the current word
 let revealedLetters = 0;
 
